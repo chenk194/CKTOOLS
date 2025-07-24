@@ -82,18 +82,11 @@
       font-weight: bold;
     }
 	
-	
-a {
+	a {
   color: #fffdd0; /* warna cream */
   text-decoration: none;
 }
 
-a:hover {
-  color: #ffe69b; /* warna cream lebih terang saat hover */
-  text-decoration: underline;
-}
-
-	
   </style>
 </head>
 <body>
@@ -146,14 +139,12 @@ a:hover {
     onerror="this.onerror=null; this.src='https://i.imgur.com/c7Lbl6N.jpeg';"
   >
   
-<!-- ✅ INI UNTUK INFO SAAT ONLINE -->
 <div id="onlineInfo" class="section" style="display: none;">
   <p><strong>ℹ️ Informasi:</strong><br>
     Akses via <strong><a href="https://bit.ly/CKTOOLS" target="_blank">WEBSITE</a></strong>, silakan login akun Google yang <strong>diizinkan</strong>.
   </p>
 </div>
 
-<!-- ✅ INI UNTUK INFO SAAT LOKAL -->
 <div id="localInfo" style="display: none; text-align:center">
   <p><strong>📂 Sedang diakses secara Lokal</strong><br>
     Akses Website online 👉 <strong><a href="https://bit.ly/CKTOOLS" target="_blank">CKTOOLS</a></strong>
@@ -168,7 +159,6 @@ a:hover {
     document.getElementById("onlineInfo").style.display = "block";
   }
 </script>
-
 
 
 
@@ -205,52 +195,59 @@ a:hover {
 </div>
 
 <script>
-  const isLocal = location.protocol === "file:";
+  window.onload = function () {
+    const isLocal = location.protocol === "file:";
 
-  const downloadMap = [
-    {
-      id: "downloadLink1",
-      local: "../CK/CK TOOLS/KREDITKAN OTOMATIS PM + 3.RAR",
-      online: "1kZUf8Gv-rOsDRrm0Adat9jR50xLdfq8o"
-    },
-    {
-      id: "downloadLink2",
-      local: "../CK/CK TOOLS/CK DOWNLOADER DETAIL.RAR",
-      online: "1hRvhwut_2HpApH_TWOCqut-0NufieEZw"
-    },
-    {
-      id: "downloadLink3",
-      local: "../CK/CK TOOLS/GABUNG TXT RINCIAN CORETAX.rar",
-      online: "14cC2BxkoxzDPtGCnwrZiNv0KJVeRXctJ"
-    },
-    {
-      id: "downloadLink4",
-      local: "../CK/CK TOOLS/RENAME FAKTUR DAN BUKTI POTONGck V2.1.rar",
-      online: "1o-o2uNcpUL2zC_vVSGxAOx8-mncF49xA"
-    },
-    {
-      id: "downloadLink5",
-      local: "../CK/CK TOOLS/REKAP SPT PPN.rar",
-      online: "1arZGsAg_LYtrIOSKzbZu7wu-r5H1RBXr"
+    const downloadMap = [
+      {
+        id: "downloadLink1",
+        local: "../CK/CK TOOLS/KREDITKAN OTOMATIS PM + 3.RAR",
+        online: "1kZUf8Gv-rOsDRrm0Adat9jR50xLdfq8o"
+      },
+      {
+        id: "downloadLink2",
+        local: "../CK/CK TOOLS/CK DOWNLOADER DETAIL.RAR",
+        online: "1hRvhwut_2HpApH_TWOCqut-0NufieEZw"
+      },
+      {
+        id: "downloadLink3",
+        local: "../CK/CK TOOLS/GABUNG TXT RINCIAN CORETAX.rar",
+        online: "14cC2BxkoxzDPtGCnwrZiNv0KJVeRXctJ"
+      },
+      {
+        id: "downloadLink4",
+        local: "../CK/CK TOOLS/RENAME FAKTUR DAN BUKTI POTONGck V2.1.rar",
+        online: "1o-o2uNcpUL2zC_vVSGxAOx8-mncF49xA"
+      },
+      {
+        id: "downloadLink5",
+        local: "../CK/CK TOOLS/REKAP SPT PPN.rar",
+        online: "1arZGsAg_LYtrIOSKzbZu7wu-r5H1RBXr"
+      }
+    ];
+
+    downloadMap.forEach(({ id, local, online }) => {
+      const link = document.getElementById(id);
+      if (!link) return;
+      if (isLocal) {
+        link.href = local;
+        link.download = local.split("/").pop();
+      } else {
+        link.href = `https://drive.google.com/uc?export=download&id=${online}`;
+        link.removeAttribute("download");
+      }
+    });
+
+    // Aman meskipun runAutomation tidak ada
+    const autoBtn = document.getElementById("runAutomation");
+    if (autoBtn) {
+      autoBtn.onclick = function () {
+        alert("Fitur otomatisasi belum diaktifkan. Silakan baca panduan di dalam arsip.");
+      };
     }
-  ];
-
-  downloadMap.forEach(({ id, local, online }) => {
-    const link = document.getElementById(id);
-    if (isLocal) {
-      link.href = local;
-      link.download = local.split("/").pop();
-    } else {
-      link.href = `https://drive.google.com/uc?export=download&id=${online}`;
-      link.removeAttribute("download");
-    }
-  });
-
-  // Contoh tombol jalankan otomatisasi
-  document.getElementById("runAutomation").onclick = function () {
-    alert("Fitur otomatisasi belum diaktifkan. Silakan baca panduan di dalam arsip.");
   };
 </script>
+
 
 
 
