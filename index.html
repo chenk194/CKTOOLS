@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Halaman Terkunci</title>
+  <title>Halaman Tools</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
       padding: 2rem;
     }
 
-    #lockScreen, #mainContent {
+    #mainContent {
       background: rgba(0, 0, 0, 0.2);
       border-radius: 15px;
       padding: 2rem;
@@ -25,37 +25,6 @@
       width: 100px;
       border-radius: 50%;
       margin-bottom: 1rem;
-    }
-
-    h1, h2 {
-      margin-bottom: 1rem;
-    }
-
-    input[type="password"] {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: none;
-      margin-top: 10px;
-      width: 70%;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin-top: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #fff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    #lockScreen.fadeOut {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1s ease;
     }
 
     a.link-button {
@@ -76,154 +45,78 @@
       color: #eee;
     }
 
-    #wrong {
-      color: yellow;
-      margin-top: 10px;
-      font-weight: bold;
+    a {
+      color: #fffdd0; /* warna cream */
+      text-decoration: none;
     }
-	
-	a {
-  color: #fffdd0; /* warna cream */
-  text-decoration: none;
-}
-
   </style>
 </head>
 <body>
 
-<!-- Lock screen -->
-<div id="lockScreen">
+<div id="mainContent">
   <img
     src="../SERTIFIKAT ELEKTRONIK/logo.JPG"
     alt="Logo CK"
     onerror="this.onerror=null; this.src='https://i.imgur.com/c7Lbl6N.jpeg';"
   >
-  <h2>🔒 Halaman Terkunci</h2>
-  <p>Masukkan password untuk membuka halaman ini.</p>
-<input type="password" id="passwordInput" placeholder="Password" onkeydown="handleEnter(event)">
-<br>
-<button onclick="checkPassword()">Buka</button>
-<p id="wrong" style="display:none;">❌ Password salah!</p>
-</div>
-<!-- Tambahkan ini dalam <script> -->
-<script>
-  function checkPassword() {
-    const input = document.getElementById("passwordInput").value;
-    const correct = "rahasia"; // Ganti dengan password Anda
 
-    if (input === correct) {
-      const lock = document.getElementById("lockScreen");
-      lock.classList.add("fadeOut");
-      setTimeout(() => {
-        lock.style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-      }, 1000);
-    } else {
-      document.getElementById("wrong").style.display = "block";
-    }
-  }
+  <!-- Info ONLINE -->
+  <div id="onlineInfo" class="section" style="display: none;">
+    <p><strong>ℹ️ Informasi:</strong><br>
+      Akses via <strong><a href="https://animated-cuchufli-081b3b.netlify.app/" target="_blank">WEBSITE</a></strong>, silakan login akun Google yang <strong>diizinkan</strong>.
+    </p>
+  </div>
 
-  function handleEnter(event) {
-    if (event.key === "Enter") {
-      checkPassword();
-    }
-  }
-</script>
+  <!-- Info LOKAL -->
+  <div id="localInfo" style="display: none; text-align:center">
+    <p><strong>📂 Sedang diakses secara Lokal</strong><br>
+      Akses Website online 👉 <strong><a href="https://animated-cuchufli-081b3b.netlify.app/" target="_blank">CKTOOLS</a></strong>
+    </p>
+  </div>
 
+  <!-- Seksi Unduhan -->
+  <div class="section">
+    <p><strong>🤖 KREDITKAN OTOMATIS + 3:</strong><br>Otomatisasi pengkreditan Faktur Pajak Masukan</p>
+    <p>Pastikan Coretax Pajak Masukan sudah difilter "Approved"</p>
+    <a id="downloadLink1" class="link-button">▶️ Unduh Kreditkan Otomatis</a>
+  </div>
 
-<!-- Konten utama -->
-<div id="mainContent" style="display:none;">
-  <img
-    src="../SERTIFIKAT ELEKTRONIK/logo.JPG"
-    alt="Logo CK"
-    onerror="this.onerror=null; this.src='https://i.imgur.com/c7Lbl6N.jpeg';"
-  >
-  
-<div id="onlineInfo" class="section" style="display: none;">
-  <p><strong>ℹ️ Informasi:</strong><br>
-    Akses via <strong><a href="https://animated-cuchufli-081b3b.netlify.app/" target="_blank">WEBSITE</a></strong>, silakan login akun Google yang <strong>diizinkan</strong>.
-  </p>
-</div>
+  <div class="section">
+    <p><strong>📥 CK Downloader Detail:</strong><br>Unduh data dari berbagai endpoint DJP (API)</p>
+    <a id="downloadLink2" class="link-button">📄 Unduh Downloader Detail</a>
+  </div>
 
-<div id="localInfo" style="display: none; text-align:center">
-  <p><strong>📂 Sedang diakses secara Lokal</strong><br>
-    Akses Website online 👉 <strong><a href="https://animated-cuchufli-081b3b.netlify.app/" target="_blank">CKTOOLS</a></strong>
-  </p>
-</div>
+  <div class="section">
+    <p><strong>📥 GABUNG SCRIPT:</strong><br>Gabungkan file .txt menjadi Excel</p>
+    <a id="downloadLink3" class="link-button">📄 Unduh Gabung Script</a>
+  </div>
 
-<script>
-  const isLocal = location.protocol === "file:";
-  if (isLocal) {
-    document.getElementById("localInfo").style.display = "block";
-  } else {
-    document.getElementById("onlineInfo").style.display = "block";
-  }
-</script>
+  <div class="section">
+    <p><strong>📥 RENAME SCRIPT:</strong><br>Rename PDF faktur, bukti potong, retur, dll</p>
+    <a id="downloadLink4" class="link-button">📄 Unduh Rename PDF</a>
+  </div>
 
+  <div class="section">
+    <p><strong>📥 REKAP PDF SPT PPN:</strong><br>File PDF SPT PPN Coretax</p>
+    <a id="downloadLink5" class="link-button">📄 Unduh REKAP SPT PPN</a>
+  </div>
 
-
-  
- <!-- KREDITKAN OTOMATIS PM + 3 -->
-<div class="section">
-  <p><strong>🤖 KREDITKAN OTOMATIS + 3:</strong><br>Otomatisasi pengkreditan Faktur Pajak Masukan</p>
-  <p>Pastikan Coretax Pajak Masukan sudah difilter "Approved"</p>
-  <a id="downloadLink1" class="link-button">▶️ Unduh Kreditkan Otomatis</a>
-</div>
-
-<!-- CK DOWNLOADER DETAIL -->
-<div class="section">
-  <p><strong>📥 CK Downloader Detail:</strong><br>Unduh data dari berbagai endpoint DJP (API)</p>
-  <a id="downloadLink2" class="link-button">📄 Unduh Downloader Detail</a>
-</div>
-
-<!-- GABUNG SCRIPT -->
-<div class="section">
-  <p><strong>📥 GABUNG SCRIPT:</strong><br>Gabungkan file .txt menjadi Excel</p>
-  <a id="downloadLink3" class="link-button">📄 Unduh Gabung Script</a>
-</div>
-
-<!-- RENAME PDF -->
-<div class="section">
-  <p><strong>📥 RENAME SCRIPT:</strong><br>Rename PDF faktur, bukti potong, retur, dll</p>
-  <a id="downloadLink4" class="link-button">📄 Unduh Rename PDF</a>
-</div>
-
-<!-- REKAP PDF -->
-<div class="section">
-  <p><strong>📥 REKAP PDF SPT PPN:</strong><br>File PDF SPT PPN Coretax</p>
-  <a id="downloadLink5" class="link-button">📄 Unduh REKAP SPT PPN</a>
+  <br><small>© 2025 CK Tools | Untuk keperluan pribadi</small>
 </div>
 
 <script>
   window.onload = function () {
     const isLocal = location.protocol === "file:";
 
+    // Tampilkan info lokal atau online
+    document.getElementById(isLocal ? "localInfo" : "onlineInfo").style.display = "block";
+
     const downloadMap = [
-      {
-        id: "downloadLink1",
-        local: "../CK/CK TOOLS/KREDITKAN OTOMATIS PM + 3.RAR",
-        online: "1kZUf8Gv-rOsDRrm0Adat9jR50xLdfq8o"
-      },
-      {
-        id: "downloadLink2",
-        local: "../CK/CK TOOLS/CK DOWNLOADER DETAIL.RAR",
-        online: "1hRvhwut_2HpApH_TWOCqut-0NufieEZw"
-      },
-      {
-        id: "downloadLink3",
-        local: "../CK/CK TOOLS/GABUNG TXT RINCIAN CORETAX.rar",
-        online: "14cC2BxkoxzDPtGCnwrZiNv0KJVeRXctJ"
-      },
-      {
-        id: "downloadLink4",
-        local: "../CK/CK TOOLS/RENAME FAKTUR DAN BUKTI POTONGck V2.1.rar",
-        online: "1o-o2uNcpUL2zC_vVSGxAOx8-mncF49xA"
-      },
-      {
-        id: "downloadLink5",
-        local: "../CK/CK TOOLS/REKAP SPT PPN.rar",
-        online: "1arZGsAg_LYtrIOSKzbZu7wu-r5H1RBXr"
-      }
+      { id: "downloadLink1", local: "../CK/CK TOOLS/KREDITKAN OTOMATIS PM + 3.RAR", online: "1kZUf8Gv-rOsDRrm0Adat9jR50xLdfq8o" },
+      { id: "downloadLink2", local: "../CK/CK TOOLS/CK DOWNLOADER DETAIL.RAR", online: "1hRvhwut_2HpApH_TWOCqut-0NufieEZw" },
+      { id: "downloadLink3", local: "../CK/CK TOOLS/GABUNG TXT RINCIAN CORETAX.rar", online: "14cC2BxkoxzDPtGCnwrZiNv0KJVeRXctJ" },
+      { id: "downloadLink4", local: "../CK/CK TOOLS/RENAME FAKTUR DAN BUKTI POTONGck V2.1.rar", online: "1o-o2uNcpUL2zC_vVSGxAOx8-mncF49xA" },
+      { id: "downloadLink5", local: "../CK/CK TOOLS/REKAP SPT PPN.rar", online: "1arZGsAg_LYtrIOSKzbZu7wu-r5H1RBXr" }
     ];
 
     downloadMap.forEach(({ id, local, online }) => {
@@ -237,41 +130,7 @@
         link.removeAttribute("download");
       }
     });
-
-    // Aman meskipun runAutomation tidak ada
-    const autoBtn = document.getElementById("runAutomation");
-    if (autoBtn) {
-      autoBtn.onclick = function () {
-        alert("Fitur otomatisasi belum diaktifkan. Silakan baca panduan di dalam arsip.");
-      };
-    }
   };
-</script>
-
-
-
-
-
-<br><small>© 2025 CK Tools | Untuk keperluan pribadi</small>
-  </div>
-
-
-<script>
-  function checkPassword() {
-    const input = document.getElementById("passwordInput").value;
-    const correct = "1"; // ← Ganti password sesuai keinginan
-
-    if (input === correct) {
-      const lock = document.getElementById("lockScreen");
-      lock.classList.add("fadeOut");
-      setTimeout(() => {
-        lock.style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-      }, 1000);
-    } else {
-      document.getElementById("wrong").style.display = "block";
-    }
-  }
 </script>
 
 </body>
