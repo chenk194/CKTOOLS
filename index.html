@@ -81,6 +81,19 @@
       margin-top: 10px;
       font-weight: bold;
     }
+	
+	
+a {
+  color: #fffdd0; /* warna cream */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffe69b; /* warna cream lebih terang saat hover */
+  text-decoration: underline;
+}
+
+	
   </style>
 </head>
 <body>
@@ -133,17 +146,29 @@
     onerror="this.onerror=null; this.src='https://i.imgur.com/c7Lbl6N.jpeg';"
   >
   
+<!-- ✅ INI UNTUK INFO SAAT ONLINE -->
 <div id="onlineInfo" class="section" style="display: none;">
   <p><strong>ℹ️ Informasi:</strong><br>
-    Akses via <strong><a href="https://bit.ly/CKTOOLS" target="_blank">WEBSITE</a></strong>, Silahkan login akun Google yang <strong>diizinkan</strong>
+    Akses via <strong><a href="https://bit.ly/CKTOOLS" target="_blank">WEBSITE</a></strong>, silakan login akun Google yang <strong>diizinkan</strong>.
+  </p>
+</div>
+
+<!-- ✅ INI UNTUK INFO SAAT LOKAL -->
+<div id="localInfo" style="display: none; text-align:center">
+  <p><strong>📂 Sedang diakses secara Lokal</strong><br>
+    Akses Website online 👉 <strong><a href="https://bit.ly/CKTOOLS" target="_blank">CKTOOLS</a></strong>
   </p>
 </div>
 
 <script>
-  if (location.protocol !== "file:") {
+  const isLocal = location.protocol === "file:";
+  if (isLocal) {
+    document.getElementById("localInfo").style.display = "block";
+  } else {
     document.getElementById("onlineInfo").style.display = "block";
   }
 </script>
+
 
 
 
